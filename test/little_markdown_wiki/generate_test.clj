@@ -28,7 +28,8 @@
 
 (defn- valid-html? [html]
   (and (string/starts-with? html "<!doctype html>")
-       (string/ends-with? html "</html>")))
+       (string/ends-with? html "</html>")
+       (string/includes? html "<meta charset=\"utf-8\">")))
 
 (defn- title-eq? [html title]
   (string/includes? html (str "<title>" title "</title>")))
