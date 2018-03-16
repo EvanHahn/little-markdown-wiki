@@ -43,3 +43,13 @@
       (is (valid-html? index-html))
       (is (title-eq? index-html "Wiki"))
       (is (not (string/includes? index-html "<li>"))))))
+
+(deftest index-dot-md-test
+  (let [input-dir (test-input-dir "index-only")
+        output-dir (test-output-dir)]
+    (generate-output input-dir output-dir)
+    (is (= ["index.html"] (filename-vec output-dir)))
+    (let [index-html (html-for output-dir "index")]
+      (is (valid-html? index-html))
+      (is (title-eq? index-html "Wiki"))
+      (is (string/includes? index-html "Hello <b>world</b>")))))
