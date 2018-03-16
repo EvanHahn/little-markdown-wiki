@@ -7,8 +7,6 @@
        (filter (memfn isFile))
        (filter #(string/ends-with? (.getName %) ".md"))))
 
-
-
 (defn generate-output [input-dir output-dir]
   (let [markdown-files (get-markdown-files input-dir)
         index (io/file output-dir "index.html")
